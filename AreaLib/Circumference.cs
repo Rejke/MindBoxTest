@@ -15,7 +15,7 @@ namespace AreaLib
          *    Also, when we choose the second way, must do this: Dimensions = new List<double>{ radius }.AsReadOnly();
          */
         
-        /// <param name="radius"></param>
+        /// <param name="radius">Circumference radius</param>
         public Circumference(double radius)
         {
             Dimensions = new List<double>{ radius, radius, Math.PI }.AsReadOnly();
