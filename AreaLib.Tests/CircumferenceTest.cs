@@ -16,6 +16,7 @@ namespace AreaLib.Tests
         {
             Assert.Throws<ArgumentException>(() => new Circumference(-1.0));
         }
+        
         [Fact]
         public void NaNRadiusTest()
         {

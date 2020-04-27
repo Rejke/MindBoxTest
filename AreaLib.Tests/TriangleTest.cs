@@ -9,9 +9,34 @@ namespace AreaLib.Tests
         [Fact]
         public void ZeroTriangleSideTest()
         {
-            Assert.Throws<ArgumentException>(() => new Triangle(0.0, 2, 3));
+            Assert.Throws<ArgumentException>(() => new Triangle(0, 2, 3));
+        }
+        
+        [Fact]
+        public void NegativeTriangleSideTest()
+        {
+            Assert.Throws<ArgumentException>(() => new Triangle(-1, 2, 3));
+        }
+        
+        [Fact]
+        public void NaNTriangleSideTest()
+        {
+            Assert.Throws<ArgumentException>(() => new Triangle(double.NaN, 2, 3));
         }
 
+        [Fact]
+        public void InfinityTriangleSideTest()
+        {
+            Assert.Throws<ArgumentException>(() => new Triangle(double.PositiveInfinity, 2, 3));
+            Assert.Throws<ArgumentException>(() => new Triangle(double.NegativeInfinity, 2, 3));
+        }
+
+        [Fact]
+        public void EpsilonTriangleSideTest()
+        {
+            Assert.Throws<ArgumentException>(() => new Triangle(double.Epsilon, 2, 3));
+        }
+        
         [Fact]
         public void NonExistentTriangleTest()
         {
