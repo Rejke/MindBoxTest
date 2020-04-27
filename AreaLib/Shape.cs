@@ -61,6 +61,7 @@ namespace AreaLib
         /// Validates given dimensions
         /// </summary>
         /// <param name="dims">Shape's dimensions</param>
-        protected virtual bool IsDimsValid(List<double> dims) => dims.All(x => x > 0);
+        protected virtual bool IsDimsValid(List<double> dims) 
+            => dims.TrueForAll(double.IsNormal) && dims.All(x => x > 0);
     }
 }

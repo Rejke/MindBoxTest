@@ -16,6 +16,24 @@ namespace AreaLib.Tests
         {
             Assert.Throws<ArgumentException>(() => new Circumference(-1.0));
         }
+        [Fact]
+        public void NaNRadiusTest()
+        {
+            Assert.Throws<ArgumentException>(() => new Circumference(double.NaN));
+        }
+
+        [Fact]
+        public void InfinityRadiusTest()
+        {
+            Assert.Throws<ArgumentException>(() => new Circumference(double.PositiveInfinity));
+            Assert.Throws<ArgumentException>(() => new Circumference(double.NegativeInfinity));
+        }
+
+        [Fact]
+        public void EpsilonRadiusTest()
+        {
+            Assert.Throws<ArgumentException>(() => new Circumference(double.Epsilon));
+        }
 
         [Fact]
         public void CalculationTest1()
