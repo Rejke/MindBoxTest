@@ -9,6 +9,10 @@ namespace AreaLib
     /// </summary>
     public class Triangle : Shape
     {
+        /*     I'm not sure about that way, because I can OrderByDescending List in constructor and
+         *     remove OrByDesc in all of Triangle class methods
+         */
+
         /// <param name="sideA">First side of triangle</param>
         /// <param name="sideB">Second side of triangle</param>
         /// <param name="sideC">Third side of triangle</param>
@@ -52,6 +56,22 @@ namespace AreaLib
                 return false;
 
             return dims[0] + dims[1] > dims[2] && dims[1] + dims[2] > dims[0] && dims[0] + dims[2] > dims[1];
+        }
+
+        /// <summary>
+        /// Overriden method that represents two-way calculation, based on type of triangle
+        /// </summary>
+        /// <returns>Triangle's area</returns>
+        protected override double CalculateArea()
+        {
+            if (IsRight)
+            {
+                List<double> dims = Dimensions.OrderByDescending(x => x).ToList();
+                return 0.5 * dims[1] * dims[2];
+            }
+
+            double semiP = (Dimensions[0] + Dimensions[1] + Dimensions[2]) / 2;
+            return Math.Sqrt(semiP * (semiP - Dimensions[0]) * (semiP - Dimensions[1]) * (semiP - Dimensions[2]));
         }
     }
 }
